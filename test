@@ -1,0 +1,26 @@
+package com.example.weatherapp; // Adjust based on your package structure
+
+import com.example.weatherapp.MockWeatherService;
+import com.example.weatherapp.WeatherData;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class WeatherAppTest {
+    
+    @Test
+    public void testGetWeather() {
+        // Arrange
+        MockWeatherService service = new MockWeatherService();
+        
+        // Act
+        WeatherData data = service.getWeather("Chennai");
+        
+        // Assert
+        assertNotNull(data, "Weather data should not be null");
+        assertEquals("Chennai", data.getLocation(), "Location should match the input");
+        // You can add more assertions here as needed, for example:
+        // assertEquals(expectedTemperature, data.getTemperature(), "Temperature should match");
+        // assertEquals(expectedDescription, data.getDescription(), "Description should match");
+    }
+}
