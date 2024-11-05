@@ -1,0 +1,49 @@
+package com.example.weatherapp;
+
+public class MockWeatherService {
+    public WeatherData getWeather(String location) {
+        // Mocked weather data
+        return new WeatherData(location, 25.5, "Sunny with scattered clouds");
+    }
+}
+package com.example.weatherapp;
+
+public class WeatherApp {
+    public static void main(String[] args) {
+        MockWeatherService weatherService = new MockWeatherService();
+        WeatherData weather = weatherService.getWeather("Chennai");
+        System.out.println(weather);
+    }
+}
+package com.example.weatherapp;
+
+public class WeatherData {
+    private String location;
+    private double temperature;
+    private String description;
+
+    // Constructor
+    public WeatherData(String location, double temperature, String description) {
+        this.location = location;
+        this.temperature = temperature;
+        this.description = description;
+    }
+
+    // Getters
+    public String getLocation() {
+        return location;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Weather in " + location + ": " + temperature + "°C, " + description;
+    }
+}
